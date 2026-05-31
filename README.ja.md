@@ -2,44 +2,44 @@
 
 # TSMP Codec Luma4
 
-TSMP のデフォルト Luma4 コーデック パッケージです。
+Luma4 は TSMP の標準 codec です。豊富な色情報に依存せず、輝度ベースのシンボルで TSMP データを記録するため、セットアップが簡単で安定したデコード経路の基準 codec として使えます。
 
-このパッケージは TSMP Core と一緒に使用します。`TSMPSetup` の Codec タブで自動検出される Luma4 codec handler、decode shader、material、prefab、catalog asset を提供します。
+TSMP を初めて導入する場合やストリーム経路を確認する場合は、まず Luma4 を使用してください。
 
-## インストール
+## 特徴
 
-VRChat Creator Companion に VPM リポジトリを追加します。
-
-```
-https://vpm.kiba.red/
-```
-
-その後、`TSMP Codec Luma4` パッケージをインストールします。
+- TSMP 標準 codec
+- 色への依存が少なく、デコード経路が単純
+- VRChat カメラ キャプチャ、OBS、Spout などの映像経路で確認しやすい基準パターン
+- `TSMPSetup` の Codec タブで自動検出
 
 ## 要件
 
+- TSMP Core: https://github.com/kibalab/TSMP-Core
 - `com.kibalab.tsmp.core` 0.0.1 以降
 - VRChat Worlds SDK 3.9.0 以降
 
+## インストール
+
+VRChat Creator Companion で VPM リポジトリを追加します。
+
+```text
+https://vpm.kiba.red/
+```
+
+その後、`TSMP Core` と `TSMP Codec Luma4` をインストールします。
+
 ## 使い方
 
-1. TSMP Core の `TSMPController.prefab`、または同等の TSMP 構成をシーンに追加します。
-2. `TSMPSetup` の Codec タブを開きます。
-3. `Refresh Codecs` を押します。
-4. `Luma4` が一覧に表示されていることを確認して選択します。
-5. `Apply Setup` を実行します。
+1. Core パッケージの `Packages/com.kibalab.tsmp.core/Samples/TSMPController.prefab` をシーンに配置します。
+2. `TSMPSetup` の Codec タブで `Refresh Codecs` を押します。
+3. `Luma4` を選択します。
+4. `Apply Setup` を実行します。
 
-Luma4 は TSMP のデフォルト コーデックです。シーンのセットアップやデバッグでは、最初に使用する基準経路として扱ってください。
+## リリース状態
 
-## リリース
+このパッケージは beta 段階で、`v0.0.x-beta.x` 形式のタグを使用します。
 
-このリポジトリは、バージョンタグを push すると GitHub Actions が release artifact を作成し、VPM backend にパッケージを登録するように設定されています。
+## ライセンス
 
-タグ名は `package.json` の `version` と一致している必要があります。
-
-例:
-
-```bash
-git tag v0.0.1
-git push origin v0.0.1
-```
+MIT License. Copyright (c) 2026 KIBA_Labs.
