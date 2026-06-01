@@ -1,3 +1,3 @@
 # TSMP Luma4 Sample
 
-Use the TSMP Core controller sample, select `Luma4` in the `TSMPSetup` Codec tab, then run `Apply Setup`.
+TSMP Core の controller sample を使用し、`TSMPSetup` の Codec タブで `Luma4` を選択してから `Apply Setup` を実行します。
