@@ -1,0 +1,28 @@
+name: Publish Luma4 beta.2 tag
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/publish-beta-2-once.yml]
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  publish:
+    if: github.event.deleted == false && github.event.head_commit.message == 'ci: publish Luma4 beta.2 tag'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RELEASE_SHA: 8dc0c3a6bd66b55dd3c90d2c185825f5864d46ea
+      RELEASE_TAG: v0.0.3-beta.2
+    steps:
+      - name: Create release tag
+        run: |
+          gh api --method POST "repos/$GH_REPO/git/refs" -f ref="refs/tags/$RELEASE_TAG" -f sha="$RELEASE_SHA"
+          actual=$(gh api "repos/$GH_REPO/git/ref/tags/$RELEASE_TAG" --jq '.object.sha')
+          test "$actual" = "$RELEASE_SHA"
+      - name: Run existing release workflow on tag
+        run: gh workflow run release.yml --repo "$GH_REPO" --ref "$RELEASE_TAG"
