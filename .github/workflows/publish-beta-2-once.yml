@@ -11,7 +11,8 @@ permissions:
 
 jobs:
   publish:
-    if: github.event.deleted == false && github.event.head_commit.message == 'ci: publish Luma4 beta.2 tag'
+    if: >-
+      github.event.deleted == false && github.event.head_commit.message == 'ci: publish Luma4 beta.2 tag'
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
